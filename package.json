@@ -38,7 +38,8 @@
     "webpack": "^1.4.1-beta1",
     "webpack-core": "^0.4.8",
     "sass-loader": "*",
-    "fb-flo": "*"
+    "fb-flo": "*",
+    "bower-webpack-plugin": "~0.1.8"
   },
   "dependencies": {
     "gulp-connect": "^2.2.0"
