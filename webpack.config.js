@@ -1,79 +1,61 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
+var webpack            = require( 'webpack' );
+var path               = require( 'path' );
+var BowerWebpackPlugin = require( 'bower-webpack-plugin' );
 
-var appRoot = path.join(__dirname, '/src');
-var bowerRoot = path.join(__dirname, '/bower_components');
-var styleRoot = appRoot + '/assets/styles';
+var PATHS = {
+    app : __dirname + '/app',
+    bower : __dirname + '/app/bower_components'
+};
 
 module.exports = {
-  cache: true,
-  debug: true,
-  entry: [appRoot + '/app.js'],
-  output: {
-    path: './build',
-    filename: 'bundle.js',
-    chunkFilename: "[id].bundle.js"
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css']
+    module: {
+        loaders: [
+            {
+                test: /\.scss$/,
+                loader: 'style!css!sass'
+            },
+            {
+                test:   /\.css$/,
+                loader: "style-loader!css-loader"
+            },
+            {
+                test: /\.js$/,
+                loader: 'ng-annotate!babel!jshint',
+                exclude: /node_modules|bower_components/
+            },
+             {
+                test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'file-loader?name=res/[name].[ext]?[hash]'
+            },
+            {
+                test: /\.html/,
+                loader: 'raw'
+            },
+            {
+                test: /\.json/,
+                loader: 'json'
+            }
+        ]
       },
-      {
-        test: /\.scss$/,
-        loaders: ['style', 'css', "sass?includePaths[]=" + styleRoot]
-      },
-      {
-        test: /\.html$/,
-        loader: 'raw'
-      },
-      {
-        test: /\.woff$/,
-        loader: 'url?prefix=font/&limit=5000&mimetype=application/font-woff'
-      },
-      {
-        test: /\.ttf$/,
-        loader: 'file?prefix=font/'
-      },
-      {
-        test: /\.eot$/,
-        loader: 'file?prefix=font/'
-      },
-      {
-        test: /\.svg$/,
-        loader: 'file?prefix=font/'
-      }
-    ],
-    noParse: [
-      path.join(bowerRoot, '/angular'),
-      path.join(bowerRoot, '/angular-route'),
-      path.join(bowerRoot, '/angular-ui-router'),
-      path.join(bowerRoot, '/angular-mocks')
-    ]
-  },
-  resolve: {
-    modulesDirectories: [
-      'node_modules',
-      'bower_components'
-    ],
-    alias: {
-      bower: bowerRoot
+    resolve: {
+        root: __dirname + '/app'
     },
-    extensions: ['', '.js', '.scss', '.css'],
-    root: appRoot
-  },
-  plugins: [
-    new webpack.ResolverPlugin([
-      new webpack.ResolverPlugin
-        .DirectoryDescriptionFilePlugin('bower.json', ['main'])
-    ], ['normal', 'loader']),
-    new webpack.ContextReplacementPlugin(/.*$/, /a^/),
-    new webpack.ProvidePlugin({
-      'angular': 'exports?window.angular!bower/angular'
-    })
-  ],
-  devtool: 'eval'
+    context : PATHS.app,
+    entry : {
+        app:[ 'webpack/hot/dev-server',  './core/bootstrap.js' ]
+    },
+    output : {
+        path: PATHS.app,
+        filename : 'bundle.js'
+
+    },
+    plugins: [
+      new BowerWebpackPlugin({
+        modulesDirectories: [ 'app/bower_components' ],
+        manifestFiles:      'bower.json',
+        searchResolveModulesDirectories: true
+      })
+    ]
 };

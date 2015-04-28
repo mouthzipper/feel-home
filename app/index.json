@@ -1,0 +1,9 @@
+{
+  "title": "feel@home",
+  "version": "0.0.1",
+  "links": [{
+    "text": "Login"
+  }, {
+    "text": "Signup"
+  }]
+}

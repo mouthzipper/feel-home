@@ -1,47 +1,37 @@
 {
   "name": "feelhome",
-  "version": "0.0.0",
-  "main": "build/index.html",
+  "version": "0.1.0",
+  "description": "",
+  "author": "mouthzipperio",
+  "contributors": [],
   "scripts": {
-    "start": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --content-base app --hot"
   },
+  "main": "build/index.js",
   "keywords": [],
-  "engines": {
-    "node": "0.10.x"
-  },
-  "private": true,
-  "homepage": "",
-  "devDependencies": {
-    "chai": "^1.9.1",
-    "coffee-loader": "*",
-    "coffee-script": "~1.8.0",
-    "css-loader": "*",
-    "exports-loader": "*",
-    "gulp": "~3.8.8",
-    "gulp-cached": "1.0.1",
-    "gulp-changed": "^1.0.0",
-    "gulp-git": "^0.5.1",
-    "gulp-util": "~3.0.1",
-    "imports-loader": "*",
-    "karma": "^0.12.23",
-    "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^0.1.4",
-    "karma-mocha": "^0.1.9",
-    "karma-webpack": "^1.2.2",
-    "minimist": "1.1.0",
-    "mocha": "^1.21.4",
-    "ngmin-webpack-plugin": "^0.1.3",
-    "raw-loader": "*",
-    "rimraf": "^2.2.8",
-    "style-loader": "*",
-    "webpack": "^1.4.1-beta1",
-    "webpack-core": "^0.4.8",
-    "sass-loader": "*",
-    "fb-flo": "*",
-    "bower-webpack-plugin": "~0.1.8"
-  },
   "dependencies": {
-    "gulp-connect": "^2.2.0"
+    "angular": "^1.3.15",
+    "jquery": "^2.1.3",
+    "mdi": "^1.0.8-beta",
+    "moment": "^2.10.2",
+    "velocity": "^0.7.2",
+    "velocity-animate": "^1.2.2"
+  },
+  "devDependencies": {
+    "babel-core": "^5.1.13",
+    "babel-loader": "^5.0.0",
+    "css-loader": "^0.12.0",
+    "file-loader": "^0.8.1",
+    "imports-loader": "^0.6.3",
+    "jshint": "^2.7.0",
+    "jshint-loader": "^0.8.3",
+    "json-loader": "^0.5.1",
+    "ng-annotate-loader": "0.0.2",
+    "node-sass": "^2.1.1",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^0.6.0",
+    "style-loader": "^0.12.1",
+    "webpack": "^1.8.10",
+    "webpack-dev-server": "^1.8.2"
   }
 }

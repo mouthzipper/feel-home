@@ -1,0 +1,1 @@
+module.exports = function () {	//styles	require( '../index.scss' );	require('../../node_modules/mdi/scss/materialdesignicons.scss');	//js	global.$ = global.jQuery = require( 'jquery' );   // $ for Lumx, jQuery for velocity	require( 'velocity-animate' );	require( 'angular' );	global.moment = require('moment');	require( 'lumx' );};
