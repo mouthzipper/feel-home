@@ -2,6 +2,7 @@
 
 var FooterCtrl = function () {
 	var vm  = this;
+	vm.title = 'footer here';
 };
 
 module.exports = function () {
